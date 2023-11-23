@@ -17,11 +17,11 @@ public class UserUpdateDTO {
 
     private String senha;
 
-//    public UserUpdateDTO(User user) {
-//        this.nome = user.getName();
-//        this.age = user.getAge();
-//        this.email = user.getEmail();
-//        this.senha = user.getPassword();
-//    }
+    public UserUpdateDTO(User user) {
+        this.nome = user.getNome();
+        this.age = user.getAge();
+        this.email = user.getEmail();
+        this.senha = user.getPassword();
+    }
 
 }

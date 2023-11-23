@@ -49,7 +49,7 @@ public class UserService {
             user.addRegister(register);
            saveUser(user);
         } catch (Exception e) {
-            throw new RuntimeException("Error registering new health register");
+            e.printStackTrace();
         }
     }
 

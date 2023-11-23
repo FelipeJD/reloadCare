@@ -36,7 +36,7 @@ public class HealthRegisterService {
             hr.setSubstances(healthRegisterDto.substances());
         }
         if (healthRegisterDto.substances() != null) {
-            hr.setSubstanceFrequencies(healthRegisterDto.substancesFrequencies());
+            hr.setSubstanceFrequencies(healthRegisterDto.substanceFrequencies());
         }
         if (healthRegisterDto.goals() != null) {
             hr.setGoals(healthRegisterDto.goals());

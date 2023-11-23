@@ -49,7 +49,7 @@ public class HealthRegister {
         this.health = healthRegisterDto.health();
         this.mentalHealth = healthRegisterDto.mentalHealth();
         this.substances = healthRegisterDto.substances();
-        this.substanceFrequencies = healthRegisterDto.substancesFrequencies();
+        this.substanceFrequencies = healthRegisterDto.substanceFrequencies();
         this.goals = healthRegisterDto.goals();
     }
 

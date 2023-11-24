@@ -49,7 +49,7 @@ Certifique-se de ter o Postman instalado no seu sistema. Você pode baixá-lo [a
 
 5. Copie o token recebido.
 
-6. Para consumir endpoints privados, adicione o token no campo "Token" localizado na aba "Authorization", no Postman (selecione "Bearer Token" no campo "Type"
+6. Para consumir endpoints privados, adicione o token no campo "Token" localizado na aba "Authorization", no Postman (selecione "Bearer Token" no campo "Type")
 
 7. Para acessar endpoints que exigem o ID do usuário ou empresa, inclua o ID no final da URL. Por exemplo:
    - `https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/12`

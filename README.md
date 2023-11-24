@@ -1,4 +1,7 @@
-## Vídeo de apresentação
+## Vídeos
+### Vídeo de apresentação do app
+colocaraqui
+### Vídeo de realização do CRUD, retornando dados em nuvem
 colocaraqui
 
 ## Integrantes
@@ -20,24 +23,21 @@ Certifique-se de ter o Postman instalado no seu sistema. Você pode baixá-lo [a
 
 2. Importe as configurações da API usando o arquivo Postman fornecido no próprio repositório (localizado na raiz). Ele pode ser identificado como 'ReloadCare.postman_collection.json'.
 
-3. Substitua `localhost:8080` pelo link de produção da API nos endpoints. Mantenha o que estiver após `8080/`. Por exemplo:
-   - De: `localhost:8080/usuarios/registrar`
-   - Para: `https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/registrar`
-
-4. Comece registrando um usuário:
-   - Endpoint: `https://reloadcare-rm88383-v2.azurewebsites.net/api/users/registrar`
+3. Comece registrando um usuário:
+   - Endpoint: `https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/registrar`
    - Método: `POST`
    - Corpo da Requisição (JSON):
      ```json
      {
        "nome": "Nome do Usuário",
+       "age": "25"
        "email": "user@email.com",
        "senha": "senha123"
      }
      ```
 
-5. Após o registro, faça login para obter um token:
-   - Endpoint: `https://reloadcare-rm88383-v2.azurewebsites.net/api/users/login`
+4. Após o registro, faça login para obter um token:
+   - Endpoint: `https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/login`
    - Método: `POST`
    - Corpo da Requisição (JSON):
      ```json
@@ -47,12 +47,12 @@ Certifique-se de ter o Postman instalado no seu sistema. Você pode baixá-lo [a
      }
      ```
 
-6. Copie o token recebido.
+5. Copie o token recebido.
 
-7. Para consumir endpoints privados, adicione o token na área "Bearer Token" no Postman.
+6. Para consumir endpoints privados, adicione o token no campo "Token" localizado na aba "Authorization", no Postman (selecione "Bearer Token" no campo "Type"
 
-8. Para acessar endpoints que exigem o ID do usuário ou empresa, inclua o ID no final da URL. Por exemplo:
-   - `https://reloadcare-rm88383-v2.azurewebsites.net/api/users/12`
+7. Para acessar endpoints que exigem o ID do usuário ou empresa, inclua o ID no final da URL. Por exemplo:
+   - `https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/12`
 
 Lembre-se de adaptar as instruções conforme necessário para refletir os detalhes específicos da API Spring Boot.
 
@@ -62,143 +62,91 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
 - Usuários
   - [POST](#registrando-um-novo-usuário)
   - [GET ALL](#encontrando-todos-os-usuários)
-  - [GET ID](#detalhes-do-usuário)
   - [PUT](#atualizando-usuário)
-  - [DELETE](#apagando-usuário)
+  - [DELETE](#deletando-usuário)
   
 - Formulário médico
-  - [POST](#registrando-nova-empresa-com-id-do-usuário)
+  - [POST](#preenchendo-formulário-de-acompanhamento-médico)
 
 
 # Usuários
 ## Registrando um novo usuário
 
-`POST` - https://reloadcare-rm88383-v2.azurewebsites.net/api/users/registrar
-
-**Campos da requisição**
-
-| campo | tipo   | obrigatório | descrição                 |
-| ----- | ------ | ----------- | ------------------------- |
-| nome  | string | sim         | Nome completo do usuário. |
-| email | string | sim         | E-mail do usuário.        |
-| senha | string | sim         | Senha do usuário.         |
+`POST` - https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/registrar
 
 **Exemplos corpo da requisição**
 
 ```js
 {
-    nome: "Douglas Welber",
-    email: 'user@gmail.com',
-    senha: "123456789"
+    "nome": "Felipe Jardim",
+    "age": "21",
+    "email": "fj@gmail.com",
+    "senha": "123456"
 }
 ```
-
-**Respostas**
-
-| código | descrição                       |
-| ------ | ------------------------------- |
-| 201    | Usuário registrado com sucesso. |
-| 401    | Campos inválidos.               |
-
 ---
 
 ## Encontrando todos os usuários
 
-`GET` https://sup-rm88383.azurewebsites.net/api/users
-
-**Exemplo corpo da requisição (retorno)**
-
-```js
-
-{
-    id: 1
-    nome: "Douglas Welber",
-    email: 'user@gmail.com',
-    senha: "123456789"
-}
-```
-
----
-
-## Detalhes do usuário
-
-`GET` - https://reloadcare-rm88383-v2.azurewebsites.net/api/users/{id}
+`GET` https://sup-rm88383.azurewebsites.net/api/usuarios
 
 **Exemplo corpo da requisição (retorno)**
 
 ```js
 {
-  "nome": "Felipe Jardim Aguiar Santos",
-  "email": "felipejardim@gmail.com",
-  "senha": "123456789"
+    "nome": "Felipe Jardim",
+    "age": "21",
+    "email": "fj@gmail.com",
+    "senha": "123456"
 }
 ```
-
-**Respostas**
-
-| código | descrição                                   |
-| ------ | ------------------------------------------- |
-| 201    | Detalhes do usuário resgatados com sucesso. |
-| 401    | Campos inválidos.                           |
-
 ---
 
 ## Atualizando usuário
 
-`PUT` - https://reloadcare-rm88383-v2.azurewebsites.net/api/users/{id}
+`PUT` - https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/{id}
 
 **Exemplo corpo da requisição**
 
 ```js
 {
-  "nome": "Felipe Jardim Aguiar Santos",
-  "email": "felipejardim@gmail.com",
-  "senha": "123456789"
+    "nome": "Felipe Carvalho",
+    "age": "22",
+    "email": "felipecarvalho@gmail.com",
+    "senha": "12345678910"
 }
 ```
-
-| código | descrição                       |
-| ------ | ------------------------------- |
-| 201    | Usuário atualizado com sucesso. |
-| 401    | Campos inválidos.               |
-
 ---
 
-## Apagando usuário
+## Deletando usuário
 
-`DELETE` https://reloadcare-rm88383-v2.azurewebsites.net/api/users/{id}
-
-**Respostas**
-
-| código | descrição                    |
-| ------ | ---------------------------- |
-| 201    | Usuário apagado com sucesso. |
-| 401    | Campos inválidos.            |
+`DELETE` https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/{id}
 
 ---
 
 # Formulário Health
 ## Preenchendo formulário de acompanhamento médico
 
-`POST` - https://reloadcare-rm88383-v2.azurewebsites.net/api/
+`POST` - https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/{id}/health
 
 **Campos da requisição**
 
 | campo   | tipo    | obrigatório | descrição                             |
 | ------- | ------- | ----------- | ------------------------------------- |
-| user | decimal | sim         | Id do usuário para o link da empresa. |
-| email   | string  | sim         | E-mail corporativo do usuário.        |
-| nome    | string  | sim         | Nome da empresa.                      |
-| cargo   | string  | sim         | Cargo que o usuário ocupa na empresa. |
+| health  | string | sim | Como o paciente se sente. |
+| mentalHealth   | string  | sim | Como o paciente se sente mentalmente. |
+| substances    | string  | sim | Substâncias utilizadas no dia. |
+| substanceFrequencies | string | sim | Frequência que ela vem sendo usada. |
+| goals | string | sim | Objetivos do paciente.|
 
 **Exemplo corpo da requisição**
 
 ```js
 {
-    user: 31,
-    nome: "Apple",
-    email: "Apple@apple.com",
-    cargo: "Gerente",
+    "health": "Estável",
+    "mentalHealth": "Feliz",
+    "substances": "Cafeína",
+    "substanceFrequencies": "1 vez por dia",
+    "goals": "Diminuir cafeína"
 }
 ```
----

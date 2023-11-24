@@ -66,7 +66,7 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
   - [PUT](#atualizando-usuário)
   - [DELETE](#apagando-usuário)
   
-- Formulário
+- Formulário médico
   - [POST](#registrando-nova-empresa-com-id-do-usuário)
 
 

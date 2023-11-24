@@ -27,11 +27,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @Table(name = "rc_tb_usuarios")
 @Builder
 @Data
-@SequenceGenerator(name = "user", sequenceName = "SQ_TB_USER", allocationSize = 1)
 public class User implements UserDetails {
 
     @Column(name = "id_usuario")
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nm_usuario", length = 80, nullable = false)

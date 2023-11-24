@@ -17,28 +17,30 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table(name = "rc_tb_health")
 public class HealthRegister {
+
+    @Column(name = "id_health")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Column(nullable = false)
+    @Column(name = "nm_health", nullable = false)
     private String health;
 
     @NotBlank
-    @Column(nullable = false)
+    @Column(name = "nm_mental_health", nullable = false)
     private String mentalHealth;
 
     @NotBlank
-    @Column(nullable = false)
+    @Column(name = "nm_substances", nullable = false)
     private String substances;
 
     @NotBlank
-    @Column(nullable = false)
+    @Column(name = "nm_substance_frequencies", nullable = false)
     private String substanceFrequencies;
 
     @NotBlank
-    @Column(nullable = false)
+    @Column(name = "nm_goals", nullable = false)
     private String goals;
 
     @ManyToOne
@@ -53,5 +55,4 @@ public class HealthRegister {
         this.substanceFrequencies = healthRegisterDto.substanceFrequencies();
         this.goals = healthRegisterDto.goals();
     }
-
 }

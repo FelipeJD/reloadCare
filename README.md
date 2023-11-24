@@ -1,30 +1,31 @@
 ## Vídeo de apresentação
-https://www.youtube.com/watch?v=uOHk59Dc1kM
+colocaraqui
 
 ## Integrantes
 rm94265 | Daniel Ferreira dos Santos - 2TDST <br/>
 rm94269 | Douglas Welber - 2TDSS <br/>
 rm88383 | Felipe Jardim - 2TDST<br/>
+rm95749 | João Vitor Braz - 2TDST<br/>
 rm94717 | Tarcisio Ferreira Couto - 2TDST<br/>
 
 # Testando a API Spring Boot
 
 ## Pré-requisitos
 
-Certifique-se de ter o Insomnia instalado no seu sistema. Você pode baixá-lo [aqui](https://insomnia.rest/download).
+Certifique-se de ter o Postman instalado no seu sistema. Você pode baixá-lo [aqui](https://www.postman.com/downloads/).
 
 ## Passos para Testar a API
 
-1. Abra o Insomnia.
+1. Abra o Postman.
 
-2. Importe as configurações da API usando o arquivo Insomnia fornecido no próprio repositório. Ele pode ser identificado como 'Insomnia_2023-09-10.json'.
+2. Importe as configurações da API usando o arquivo Postman fornecido no próprio repositório (localizado na raiz). Ele pode ser identificado como 'ReloadCare.postman_collection.json'.
 
 3. Substitua `localhost:8080` pelo link de produção da API nos endpoints. Mantenha o que estiver após `8080/`. Por exemplo:
-   - De: `localhost:8080/users/registrar`
-   - Para: `https://sup-rm88383.azurewebsites.net/api/users/registrar`
+   - De: `localhost:8080/usuarios/registrar`
+   - Para: `https://reloadcare-rm88383-v2.azurewebsites.net/api/usuarios/registrar`
 
 4. Comece registrando um usuário:
-   - Endpoint: `https://sup-rm88383.azurewebsites.net/api/users/registrar`
+   - Endpoint: `https://reloadcare-rm88383-v2.azurewebsites.net/api/users/registrar`
    - Método: `POST`
    - Corpo da Requisição (JSON):
      ```json
@@ -36,7 +37,7 @@ Certifique-se de ter o Insomnia instalado no seu sistema. Você pode baixá-lo [
      ```
 
 5. Após o registro, faça login para obter um token:
-   - Endpoint: `https://sup-rm88383.azurewebsites.net/api/users/login`
+   - Endpoint: `https://reloadcare-rm88383-v2.azurewebsites.net/api/users/login`
    - Método: `POST`
    - Corpo da Requisição (JSON):
      ```json
@@ -48,15 +49,15 @@ Certifique-se de ter o Insomnia instalado no seu sistema. Você pode baixá-lo [
 
 6. Copie o token recebido.
 
-7. Para consumir endpoints privados, adicione o token na área "Bearer Token" no Insomnia.
+7. Para consumir endpoints privados, adicione o token na área "Bearer Token" no Postman.
 
 8. Para acessar endpoints que exigem o ID do usuário ou empresa, inclua o ID no final da URL. Por exemplo:
-   - `https://sup-rm88383.azurewebsites.net/api/users/12`
+   - `https://reloadcare-rm88383-v2.azurewebsites.net/api/users/12`
 
-Lembre-se de adaptar as instruções conforme necessário para refletir os detalhes específicos do seu projeto e da API Spring Boot.
+Lembre-se de adaptar as instruções conforme necessário para refletir os detalhes específicos da API Spring Boot.
 
 
-# SUP! Endpoints
+# ReloadCare™ Endpoints
 
 - Usuários
   - [POST](#registrando-um-novo-usuário)
@@ -65,18 +66,14 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
   - [PUT](#atualizando-usuário)
   - [DELETE](#apagando-usuário)
   
-- Empresa
+- Formulário
   - [POST](#registrando-nova-empresa-com-id-do-usuário)
-  - [GET ALL](#encontre-todas-empresas)
-  - [GET ID](#detalhes-da-empresa)
-  - [PUT](#atualizando-empresa)
-  - [DELETE](#apagando-empresa)
 
 
 # Usuários
 ## Registrando um novo usuário
 
-`POST` - https://sup-rm88383.azurewebsites.net/api/users/registrar
+`POST` - https://reloadcare-rm88383-v2.azurewebsites.net/api/users/registrar
 
 **Campos da requisição**
 
@@ -91,22 +88,6 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
 ```js
 {
     nome: "Douglas Welber",
-    email: 'user@gmail.com',
-    senha: "123456789"
-}
-```
-
-```js
-{
-  "nome": "Felipe Jardim",
-  "email": "felipejardim@gmail.com",
-  "senha": "123456"
-}
-```
-
-```js
-{
-    nome: "Manuel Gomes",
     email: 'user@gmail.com',
     senha: "123456789"
 }
@@ -128,33 +109,20 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
 **Exemplo corpo da requisição (retorno)**
 
 ```js
-[
-    {
+
+{
     id: 1
     nome: "Douglas Welber",
     email: 'user@gmail.com',
     senha: "123456789"
-    },
-    {
-    "id": 31,
-    "nome": "Felipe Jardim",
-    "email": "felipejardim@gmail.com",
-    "senha": "123456"
-    },
-    {
-    id: 00256
-    nome: "Manuel Gomes",
-    email: 'user@gmail.com',
-    senha: "123456789"
-    }
-]
+}
 ```
 
 ---
 
 ## Detalhes do usuário
 
-`GET` - https://sup-rm88383.azurewebsites.net/api/users/{id}
+`GET` - https://reloadcare-rm88383-v2.azurewebsites.net/api/users/{id}
 
 **Exemplo corpo da requisição (retorno)**
 
@@ -177,7 +145,7 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
 
 ## Atualizando usuário
 
-`PUT` - https://sup-rm88383.azurewebsites.net/api/users/{id}
+`PUT` - https://reloadcare-rm88383-v2.azurewebsites.net/api/users/{id}
 
 **Exemplo corpo da requisição**
 
@@ -198,7 +166,7 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
 
 ## Apagando usuário
 
-`DELETE` https://sup-rm88383.azurewebsites.net/api/users/{id}
+`DELETE` https://reloadcare-rm88383-v2.azurewebsites.net/api/users/{id}
 
 **Respostas**
 
@@ -209,10 +177,10 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
 
 ---
 
-# Empresa
-## Registrando nova empresa com ID do usuário
+# Formulário Health
+## Preenchendo formulário de acompanhamento médico
 
-`POST` - https://sup-rm88383.azurewebsites.net/api/users/addCompany/1
+`POST` - https://reloadcare-rm88383-v2.azurewebsites.net/api/
 
 **Campos da requisição**
 
@@ -233,120 +201,4 @@ Lembre-se de adaptar as instruções conforme necessário para refletir os detal
     cargo: "Gerente",
 }
 ```
-
-```js
-{
-    user: 2,
-    nome: "Coca Cola",
-    email: "CocaCola@contato.com",
-    cargo: "Vendedor",
-}
-```
-
-```js
-{
-    user: 3,
-    nome: "Amazon",
-    email: "Amazon@amazoncontato.com",
-    cargo: "CTO",
-}
-```
-
-**Respostas**
-
-| código | descrição                       |
-| ------ | ------------------------------- |
-| 201    | Empresa registrada com sucesso. |
-| 401    | Campos inválidos.               |
-
----
-
-## Encontre todas empresas
-
-`GET` https://sup-rm88383.azurewebsites.net/api/empresas
-
-**Exemplo corpo da requisição (retorno)**
-
-```js
-[
-  {
-    user: 31,
-    nome: "Apple",
-    email: "Apple@apple.com",
-    cargo: "Gerente",
-  },
-  {
-    user: 2,
-    nome: "Coca Cola",
-    email: "CocaCola@contato.com",
-    cargo: "Vendedor",
-  },
-  {
-    user: 3,
-    nome: "Amazon",
-    email: "Amazon@amazoncontato.com",
-    cargo: "CTO",
-  },
-];
-```
-
----
-
-## Detalhes da empresa
-
-`GET` - https://sup-rm88383.azurewebsites.net/api/empresas/{id}
-
-**Exemplo corpo da requisição (retorno)**
-
-```js
-    {
-        id: 1
-        nome: "Amazon Brasil",
-        email: "Amazon@amazoncontato.com",
-        cargo: "CTO"
-    }
-```
-
-**Respostas**
-
-| código | descrição                                   |
-| ------ | ------------------------------------------- |
-| 201    | Detalhes da empresa resgatados com sucesso. |
-| 401    | Campos inválidos.                           |
-
----
-
-## Atualizando Empresa
-
-`PUT` - https://sup-rm88383.azurewebsites.net/api/empresas/{id}
-
-**Exemplo corpo da requisição**
-
-```js
-    {
-        id: 31
-        nome: "Amazon Brasil",
-        email: "Amazon@amazoncontato.com",
-        cargo: "CTO"
-    }
-```
-
-| código | descrição                    |
-| ------ | ---------------------------- |
-| 201    | Empresa editada com sucesso. |
-| 401    | Campos inválidos.            |
-
----
-
-## Apagando empresa
-
-`DELETE` https://sup-rm88383.azurewebsites.net/api/empresas/{id}
-
-**Respostas**
-
-| código | descrição                     |
-| ------ | ----------------------------- |
-| 201    | Empresa deletada com sucesso. |
-| 401    | Campos inválidos              |
-
 ---

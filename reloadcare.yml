@@ -1,0 +1,27 @@
+pool:
+  name: Azure Pipelines
+  demands: maven
+
+variables:
+  mavenPOMFile: 'pom.xml'
+
+steps:
+- task: Maven@3
+  displayName: Maven
+  inputs:
+    mavenPomFile: '$(Parameters.mavenPOMFile)'
+    testRunTitle: 'Testes de Código por JUnit'
+    jdkVersionOption: 1.17
+
+- task: CopyFiles@2
+  displayName: 'Copy Files'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**/*.jar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: app
